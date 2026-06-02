@@ -6,7 +6,7 @@
 /*   By: pedro-henrique <pedro-henrique@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 21:39:53 by pedro-henri       #+#    #+#             */
-/*   Updated: 2026/06/01 22:09:30 by pedro-henri      ###   ########.fr       */
+/*   Updated: 2026/06/02 01:05:52 by pedro-henri      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,33 @@ t_parsing_data	*parsing_data(char **av)
 	return (datas);
 }
 
+t_programmer_list *create_list_programmers(t_parsing_data *datas) 
+{
+	t_programmer_list	*l_programmers;
+	t_programmer_list	*node;
+	t_programmer_list	*tmp;
+
+	if (!datas)
+		return (NULL);
+	while(!tmp)
+	{
+		if (tmp->next == NULL)
+		{
+			node = create_node_programmer(datas);
+			tmp->next = node;
+			node->next = NULL;
+			node->prev = tmp;
+		}
+		else
+			tmp = tmp->next;
+	}
+	l_programmers = tmp;
+	return (l_programmers);
+}
 
 int main(int ac, char *av[])
 {
-	t_programmer	*programmer;
+	t_programmer_list	*programmers;
 	t_parsing_data	*datas;
 	if	(ac != 9)
 	{

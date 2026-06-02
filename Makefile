@@ -1,6 +1,6 @@
 CC = cc
 FLAGS = -Wall -Werror -Wextra
-NAME = a.out
+NAME = codexion
 SRCS = ./utils/functions_list/create_node.c \
 		./utils/functions_list/print_list.c \
 		./utils/is_valid_datas.c \
